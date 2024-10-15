@@ -1,0 +1,9 @@
+.explore-box{
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.6);
+    transition:0.3s ease;
+}
+
+.explore-box:hover{
+    /* box-shadow: 4px 6px 8px rgba(0, 0, 0, 1); */
+    transform: scale(1.05);
+}

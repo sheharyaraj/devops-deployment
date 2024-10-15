@@ -1,0 +1,81 @@
+.card {
+  width: 15rem;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  margin-bottom: 10px;
+}
+
+.card-img-top {
+  cursor: pointer;
+}
+
+.image-error {
+  color: red;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+.fullscreen-img {
+  max-width: 90%;
+  margin-bottom: 20px;
+}
+
+.nav-button,
+.close-button {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  margin: 5px;
+}
+
+.close-button {
+  font-size: 16px;
+  background-color: #f44336;
+  color: white;
+}
+
+.screenshot-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  pointer-events: none; /* Allow interactions to pass through */
+  opacity: 0; /* Completely transparent */
+  display: none; /* Initially hidden */
+  z-index: 1001; /* Higher z-index to place it above the image */
+}
+
+
+@media print {
+  .card-img-top {
+    display: none;
+  }
+}

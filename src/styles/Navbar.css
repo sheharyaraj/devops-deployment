@@ -1,0 +1,14 @@
+.navbar{
+    background-color: #1F1B2D;
+}
+Link{
+    color: #FD5631;
+}
+
+.nav-item{
+    transition: translate 0.4s ease-in-out
+}
+
+.nav-item:hover{
+    transform: translate(3px, -2px) scale(1.1);
+}

@@ -1,0 +1,17 @@
+/* Watermark Styles */
+.watermark {
+    position: relative;
+    display: inline-block; /* Display as inline block to center vertically */
+  }
+  
+  .watermark-text {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%) rotate(-45deg); /* Center and rotate diagonally */
+    font-weight: bold;
+    color: rgba(126, 118, 118, 0.5); /* Adjust opacity and color as needed */
+    pointer-events: none; /* Allow interactions to pass through */
+    z-index: 1002; /* Place it above the screenshot overlay */
+  }
+  

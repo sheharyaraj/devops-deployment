@@ -1,0 +1,26 @@
+/* .footer-logo{
+    transition: 0.3s ease;
+} */
+
+/* .footer-logo:hover{
+    transform: scale(1.2);
+} */
+
+.footer-fblogo{
+    transition: 0.3s ease;
+}
+.footer-fblogo:hover{
+    transform: scale(1.25);
+    color: #0571E6;
+}
+
+.footer-xlogo{
+    transition: 0.3s ease;
+}
+.footer-xlogo:hover{
+    transform: scale(1.2);
+}
+
+.pages{
+    font-family: "Roboto-slab";
+}

@@ -1,0 +1,6 @@
+REACT_APP_MONGOURL="mongodb+srv://admin:admin@cluster0.ky7vibn.mongodb.net/pastpaperco?retryWrites=true&w=majority"
+REACT_APP_NEWSLETTER_SERVICE_ID=service_mfztutq
+REACT_APP_NEWSLETTER_TEMPLATE_ID=template_8mgtwyr
+REACT_APP_NEWSLETTER_PUBLIC_KEY=CG0bLmWjESRVbK3VJ
+REACT_APP_API_URL=http://localhost:5001
+REACT_APP_ADMIN_EMAIL=admin@gmail.com
