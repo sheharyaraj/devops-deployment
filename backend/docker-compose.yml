@@ -1,0 +1,11 @@
+version: '3'
+services:
+  backend:
+    build: .  # Build from the current directory
+    ports:
+      - "5001:5001"  # Map container port 5000 to local port 5000
+    volumes:
+      - .:/app  # Ensure it matches the backend folder
+      - /app/node_modules
+    command: npm run dev  # Use nodemon to start the app
+
