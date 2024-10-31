@@ -28,14 +28,14 @@ jobs:
         run: npm install
 
       - name: Run Unit Tests
-        run: npm test --prefix frontend
+        run: npm test 
         continue-on-error: false
 
       - name: Lint Code
-        run: npm run lint --prefix frontend
+        run: npm run lint
       
       - name: Run SAST Analysis
-        run: semgrep --config "auto" frontend/
+        run: semgrep --config "auto"
 
 
       - name: Set Image Tag
