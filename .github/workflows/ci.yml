@@ -47,7 +47,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t ${{ env.FRONTEND_IMAGE }}:${{ env.IMAGE_TAG }}
+          docker build -t ${{ env.FRONTEND_IMAGE }}:${{ env.IMAGE_TAG }} .
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ env.DOCKERHUB_USERNAME }} --password-stdin
           docker push ${{ env.FRONTEND_IMAGE }}:${{ env.IMAGE_TAG }}
         env:
@@ -78,6 +78,9 @@ jobs:
 
       - name: Lint Code
         run: npm run lint --prefix backend
+
+      - name: Install Semgrep
+        run: pip install semgrep
       
       - name: Run SAST Analysis
         run: semgrep --config "auto" backend/
@@ -88,7 +91,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t ${{ env.BACKEND_IMAGE }}:${{ env.IMAGE_TAG }} frontend
+          docker build -t ${{ env.BACKEND_IMAGE }}:${{ env.IMAGE_TAG }} backend
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ env.DOCKERHUB_USERNAME }} --password-stdin
           docker push ${{ env.BACKEND_IMAGE }}:${{ env.IMAGE_TAG }}
         env:
