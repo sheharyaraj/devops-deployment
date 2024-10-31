@@ -47,7 +47,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t ${{ env.FRONTEND_IMAGE }}:${{ env.IMAGE_TAG }} frontend
+          docker build -t ${{ env.FRONTEND_IMAGE }}:${{ env.IMAGE_TAG }}
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ env.DOCKERHUB_USERNAME }} --password-stdin
           docker push ${{ env.FRONTEND_IMAGE }}:${{ env.IMAGE_TAG }}
         env:
