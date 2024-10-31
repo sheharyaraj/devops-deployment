@@ -1,6 +1,6 @@
-import { ESLint } from "eslint";
+const { ESLint } = require("eslint");
 
-export default new ESLint({
+module.exports = new ESLint({
   baseConfig: {
     env: {
       browser: true,
