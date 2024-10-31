@@ -38,6 +38,20 @@ jobs:
         run: semgrep --config "auto" frontend/
 
 
+      - name: Set Image Tag
+        id: image_tag
+        run: echo "IMAGE_TAG=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t ${{ env.FRONTEND_IMAGE }}:${{ env.IMAGE_TAG }} frontend
+          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ env.DOCKERHUB_USERNAME }} --password-stdin
+          docker push ${{ env.FRONTEND_IMAGE }}:${{ env.IMAGE_TAG }}
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
+
   backend:
     runs-on: ubuntu-latest
     steps:
@@ -57,6 +71,19 @@ jobs:
       
       - name: Run SAST Analysis
         run: semgrep --config "auto" backend/
+
+      - name: Set Image Tag
+        id: image_tag
+        run: echo "IMAGE_TAG=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t ${{ env.BACKEND_IMAGE }}:${{ env.IMAGE_TAG }} frontend
+          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ env.DOCKERHUB_USERNAME }} --password-stdin
+          docker push ${{ env.BACKEND_IMAGE }}:${{ env.IMAGE_TAG }}
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
 
       
 
