@@ -1,4 +1,4 @@
-const { ESLint } = require("eslint");
+import { ESLint } from "eslint";
 
 module.exports = new ESLint({
   baseConfig: {
