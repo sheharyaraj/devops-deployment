@@ -1,0 +1,10 @@
+replicaCount: 1
+
+image:
+  repository: sheri1/pp-app-backend
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer   # Change this to LoadBalancer
+  port: 5000

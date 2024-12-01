@@ -114,5 +114,40 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
 
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs:
+      - frontend
+      - backend
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: 'v1.31.2'
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: '3.16.2'
+
+      - name: Configure kubectl
+        run: |
+          aws eks --region us-east-1 update-kubeconfig --name demo
+
+      - name: Deploy with Helm
+        run: |
+          helm upgrade --install frontend-release ./helm-charts/frontend --namespace default
+          helm upgrade --install backend-release ./helm-charts/backend --namespace default
       
 
