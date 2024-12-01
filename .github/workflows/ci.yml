@@ -147,7 +147,7 @@ jobs:
 
       - name: Deploy with Helm
         run: |
-          helm upgrade --install frontend-release ./helm-charts/frontend --namespace default
-          helm upgrade --install backend-release ./helm-charts/backend --namespace default
+          helm upgrade --install frontend-release ./k8s/helm-charts/frontend --namespace default
+          helm upgrade --install backend-release ./k8s/helm-charts/backend --namespace default
       
 
