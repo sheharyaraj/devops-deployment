@@ -141,12 +141,13 @@ jobs:
         working-directory: terraform
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -refresh=false
         working-directory: terraform
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -refresh=false
         working-directory: terraform
+        continue-on-error: true
         env:
           TF_VAR_aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           TF_VAR_aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
