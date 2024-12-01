@@ -134,12 +134,12 @@ jobs:
       - name: Set up kubectl
         uses: azure/setup-kubectl@v1
         with:
-          version: 'v1.31.2'
+          version: 'v1.24.0'
 
       - name: Set up Helm
         uses: azure/setup-helm@v1
         with:
-          version: '3.16.2'
+          version: '3.9.0'
 
       - name: Configure kubectl
         run: |
